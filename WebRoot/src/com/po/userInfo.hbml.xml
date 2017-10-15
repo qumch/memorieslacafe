@@ -1,0 +1,28 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.po.userInfo" table="userinfo" >
+        <id name="name" type="string">
+            <column name="name" />
+        </id>
+        <property name="age" type="string">
+            <column name="age" length="255" not-null="true" />
+        </property>
+        <property name="gender" type="string">
+            <column name="gender" length="255" not-null="true" />
+        </property>
+        <property name="phoneNo" type="string">
+            <column name="phoneNo" length="255" not-null="true" />
+        </property>
+        <property name="qq" type="string">
+            <column name="qq" length="255" not-null="false" />
+        </property>
+        <property name="education" type="string">
+            <column name="education" length="255" not-null="false" />
+        </property>
+        <property name="household" type="string">
+            <column name="household" length="255" not-null="false" />
+        </property>
+   </class>
+</hibernate-mapping>

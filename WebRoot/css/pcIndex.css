@@ -1,0 +1,15 @@
+
+.index_content{
+	display:flex;
+	display: inline-flex;  
+	display: -webkit-flex 
+}
+.content_left{
+	flex:1;
+}
+content_right{
+	flex:1;
+}
+.content_mid{
+	flex:4;
+}
