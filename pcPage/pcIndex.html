@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="../js/jquery2.2.5.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/swiper-3.4.2.jquery.min.js"></script>
+<script src="../js/lessonList.js"></script>
+<script src="../js/totalMenu.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../css/swiper-3.4.2.min.css">
+<link rel="stylesheet" type="text/css" href="../css/totalMenu.css">
+<style>
+.lessonImgDiv{
+	width:85%;
+	height:80%;
+	margin:auto
+}
+.lessonImgDiv img{
+	width:100%;
+	height:100%;
+}
+.lessonName{
+	text-align: center;
+    margin-top: 20px;
+    font-size:26px;
+    font-family:"微软雅黑";
+}
+.lessonBack{
+	position:absolute;
+	top:10px;
+	left:7.5%;
+	width:85%;
+	height:75%;
+	opacity:.8;
+}
+.lessonBack{
+	margin:auto;
+	text-align:center;
+}
+.detail{
+    position: absolute;
+    width: 100%;
+    height:100%;
+    font-size: 22px;
+    font-weight: 700;
+    background-color: white;
+    opacity: .8;
+    display:none;
+}
+.lessonImgDiv, .lessonBack, .lessonName{
+ 	cursor:pointer 
+}
+.lessonName:hover{
+	color:#AAA;
+}
+</style>
+<title>臻忆咖啡</title>
+</head>
+<body>
+	<div class="topLogoDiv">
+		<img src="../img/coffeLogo.jpg" />
+	</div>
+	<ul class="nav nav-tabs nav-justified">
+	  <li ><a href="pcIndex.html"  id="index">首页</a></li>
+	  <li ><a href="companyIntroduce.jsp"  id="introduce">公司简介</a></li>
+	  <li ><a href="#"  id="teacherTeam">师资团队</a></li>
+	  <li ><a href="#"  id="lessonDetails">沙龙内容</a></li>
+	  <li ><a href="scaa.jsp"  id="scaa">SCAA证书</a></li>
+	  <li ><a href="coffeCulture.jsp"  id="coffeCulture">咖啡文化</a></li>
+	  <li ><a href="connectUs.jsp"  id="connectUs">联系我们</a></li>
+	</ul>
+	<div class="index_content">
+		<div class="content_left">
+		<div style="padding-top:200px;text-align:center;">
+			<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=378471446&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:378471446:53" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
+		</div>
+		</div>
+		<div class="menuDetailAll">
+			<div class="content_mid" >
+				<div class="swiper-container-index">
+					 <div class="swiper-wrapper">
+					    <div class="swiper-slide"><img src="../img/timg3.jpg"/></div>
+					    <div class="swiper-slide"><img src="../img/56f4cda043ab7.jpg"/></div>
+					    <div class="swiper-slide"><img src="../img/5684c14237890.jpg"/></div>
+						<div class="swiper-slide"><img src="../img/timg.jpg"/></div>
+					
+					 </div>
+					 <div class="swiper-pagination"></div>
+				</div>
+				<div class="lessonTable">
+					<ul class="mid_lesson">
+						
+					</ul>
+				</div>
+			</div>
+			
+		</div>
+		<div class="content_right">
+			<div class="right_message">
+				<div class="erweima">二维码留空</div>
+				<div class="tel">
+					<div>沙龙报名热线</div>
+					<div><span class="glyphicon glyphicon-earphone"></span> 400 123 123</div>
+					<div>导师热线</div>
+					<div>吴老师:<span>130 1234 1234</span></div>
+					<div>李老师:<span>130 1234 1234</span></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="footer">页脚</div>
+</body>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+	//创建图片轮播实例
+		imageMove(".swiper-container-index")
+	//根据数组动态添加课程
+		showLessonList()
+	//显示课程价格
+		showLessonPrice()
+	//添加页脚
+		appendHTML()
+	})
+	function showLessonPrice(){
+		$('.lessonBack').on('mouseover',function(e){
+			this.getElementsByClassName('detail')[0].style='display:block;'
+		})
+		$('.lessonBack').on('mouseout',function(e){
+			this.getElementsByClassName('detail')[0].style='display:none;'
+		})
+	}
+	function showLessonList(){
+		for(let i=0;i<lesson.length;i++){
+				$(".mid_lesson").append(
+				`<li class='lesson'>
+					<div class='lessonImgDiv' ><img src='../${lesson[i].titleImg}' /></div>
+					<div class='lessonBack' onclick='gtProductInfo(${lesson[i].courseNo})'>
+						<div class='detail' >
+							<div style='margin-top:15%;'>${lesson[i].courseName}</div>
+							<div>${lesson[i].FeeForOne}</div>
+						</div>
+					</div>
+					<div class='lessonName' onclick='gtProductInfo(${lesson[i].courseNo})'>${lesson[i].courseName}</div>
+				</li>`
+				
+				);
+			}
+	}
+	
+	function gtProductInfo(no){
+		window.open("lessonDetail.jsp?courseNo="+no);
+	}
+</script>
+</html>
